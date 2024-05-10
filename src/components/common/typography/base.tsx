@@ -20,8 +20,8 @@ interface TypographyProps
 }
 
 const styles = stylex.create({
-  variant: (variant: Required<VariantProps>) => ({
-    color: colors[variant.color],
+  variant: (variant: VariantProps) => ({
+    color: colors[variant.color || 'black'],
     fontWeight: variant.fw,
   }),
 });
@@ -32,8 +32,8 @@ const withTypographyBase = (el: ElementType, variant: Typography) => {
     className,
     children,
     style,
-    fw = 'normal',
-    color = 'black',
+    fw,
+    color,
     ...props
   }) => {
     return React.createElement(
