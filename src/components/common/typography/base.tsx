@@ -21,7 +21,7 @@ interface TypographyProps
 
 const styles = stylex.create({
   variant: (variant: VariantProps) => ({
-    color: colors[variant.color || 'black'],
+    color: colors[variant.color || 'black100'],
     fontWeight: variant.fw,
   }),
 });
