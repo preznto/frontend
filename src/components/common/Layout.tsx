@@ -17,7 +17,8 @@ const Layout: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <main {...stylex.props(styles.layout)}>
       {children}
-      <BottomNavigation />
+      {/* TODO: 페이지 별로 노출 여부 조정하기. 전역 상태로 관리. */}
+      <BottomNavigation show={true} />
     </main>
   );
 };

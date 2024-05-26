@@ -69,15 +69,19 @@ const styles = stylex.create({
   },
 });
 
-interface BottomNavigationProps {}
+interface BottomNavigationProps {
+  show: boolean;
+}
 
-const BottomNavigation: React.FC<BottomNavigationProps> = () => {
+const BottomNavigation: React.FC<BottomNavigationProps> = ({ show }) => {
   return (
-    <div {...stylex.props(styles.container)}>
-      {NAVIGATION_ITEMS.map((item, index) => (
-        <BottomNavigationAction key={index} item={item} />
-      ))}
-    </div>
+    show && (
+      <div {...stylex.props(styles.container)}>
+        {NAVIGATION_ITEMS.map((item, index) => (
+          <BottomNavigationAction key={index} item={item} />
+        ))}
+      </div>
+    )
   );
 };
 
