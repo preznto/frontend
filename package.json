@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "gen:icons": "npx @svgr/cli -- src/assets/icons"
   },
   "dependencies": {
     "@tanstack/react-router": "^1.30.1",
@@ -18,6 +19,7 @@
     "zustand": "^4.5.2"
   },
   "devDependencies": {
+    "@svgr/cli": "^8.1.0",
     "@tanstack/router-devtools": "^1.30.1",
     "@tanstack/router-vite-plugin": "^1.30.0",
     "@types/react": "^18.2.66",
@@ -28,8 +30,14 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
+    "prettier": "^3.2.5",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
     "vite-plugin-stylex": "^0.8.3"
+  },
+  "overrides": {
+    "vite-plugin-stylex": {
+      "@stylexjs/babel-plugin": "^0.6.1"
+    }
   }
 }
