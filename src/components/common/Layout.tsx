@@ -1,10 +1,11 @@
 import * as stylex from '@stylexjs/stylex';
 import { PropsWithChildren } from 'react';
+import BottomNavigation from './BottomNavigation';
+import { layout } from '../../theme/layout.stylex';
 
-const MAX_WIDTH = 1280;
 const styles = stylex.create({
   layout: {
-    maxWidth: MAX_WIDTH,
+    maxWidth: layout.maxWidth,
     paddingBottom: 30,
     marginRight: 'auto',
     marginLeft: 'auto',
@@ -13,7 +14,12 @@ const styles = stylex.create({
 });
 
 const Layout: React.FC<PropsWithChildren> = ({ children }) => {
-  return <main {...stylex.props(styles.layout)}>{children}</main>;
+  return (
+    <main {...stylex.props(styles.layout)}>
+      {children}
+      <BottomNavigation />
+    </main>
+  );
 };
 
 export default Layout;
