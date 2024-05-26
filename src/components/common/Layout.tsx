@@ -6,7 +6,7 @@ import { layout } from '../../theme/layout.stylex';
 const styles = stylex.create({
   layout: {
     maxWidth: layout.maxWidth,
-    paddingBottom: 30,
+    paddingBottom: layout.bottomNavigationHeight,
     marginRight: 'auto',
     marginLeft: 'auto',
     height: '100%',

@@ -11,6 +11,7 @@ import { Link, ParseRoute, useRouter } from '@tanstack/react-router';
 import { useMemo } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { layout } from '../../theme/layout.stylex';
+import { colors } from '../../theme/colors.stylex';
 
 type RegisteredPath = ParseRoute<typeof routeTree>['fullPath'];
 
@@ -20,6 +21,7 @@ type NavigationItem = {
   to: RegisteredPath;
 };
 
+// TODO: 메뉴별로 경로 지정하기 - 해쉬로? search로?
 const NAVIGATION_ITEMS: NavigationItem[] = [
   { menu: 'message', to: '/' },
   { menu: 'wish', to: '/' },
@@ -64,8 +66,9 @@ const styles = stylex.create({
     display: 'flex',
     justifyContent: 'space-around',
     padding: '12px 0 8px',
-    height: 60,
-    zIndex: 100,
+    height: layout.bottomNavigationHeight,
+    borderTop: '1px solid ' + colors.black08,
+    zIndex: layout.zIndexNavigation,
   },
 });
 
