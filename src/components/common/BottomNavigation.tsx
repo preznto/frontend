@@ -1,4 +1,3 @@
-import { routeTree } from '@/routeTree.gen';
 import {
   IconHeart,
   IconHeartFilled,
@@ -7,50 +6,44 @@ import {
   IconPerson,
   IconPersonFilled,
 } from './icons';
-import { Link, ParseRoute, useRouter } from '@tanstack/react-router';
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { layout } from '../../theme/layout.stylex';
 import { colors } from '../../theme/colors.stylex';
 
-type RegisteredPath = ParseRoute<typeof routeTree>['fullPath'];
-
 type Menu = 'wish' | 'message' | 'my';
 type NavigationItem = {
   menu: Menu;
-  to: RegisteredPath;
+  activeIcon: React.ReactNode;
+  inactiveIcon: React.ReactNode;
 };
 
-// TODO: 메뉴별로 경로 지정하기 - 해쉬로? search로?
 const NAVIGATION_ITEMS: NavigationItem[] = [
-  { menu: 'message', to: '/' },
-  { menu: 'wish', to: '/' },
-  { menu: 'my', to: '/' },
+  { menu: 'message', activeIcon: <IconMessageFilled />, inactiveIcon: <IconMessage /> },
+  { menu: 'wish', activeIcon: <IconHeartFilled />, inactiveIcon: <IconHeart /> },
+  { menu: 'my', activeIcon: <IconPersonFilled />, inactiveIcon: <IconPerson /> },
 ];
 
 interface BottomNavigationActionProps {
   item: NavigationItem;
+  isActive: boolean;
+  onClick: (menu: Menu) => void;
 }
 
-const BottomNavigationAction: React.FC<BottomNavigationActionProps> = ({ item }) => {
-  const router = useRouter();
-  const isActive = useMemo(() => {
-    return router.state.location.pathname === item.to;
-  }, [item.to, router.state.location.pathname]);
-
+const BottomNavigationAction: React.FC<BottomNavigationActionProps> = ({
+  item,
+  isActive,
+  onClick,
+}) => {
   const Icon = useMemo(() => {
-    switch (item.menu) {
-      case 'wish':
-        return isActive ? <IconHeartFilled /> : <IconHeart />;
-      case 'message':
-        return isActive ? <IconMessageFilled /> : <IconMessage />;
-      case 'my':
-        return isActive ? <IconPersonFilled /> : <IconPerson />;
-    }
-  }, [isActive, item.menu]);
+    return isActive ? item.activeIcon : item.inactiveIcon;
+  }, [isActive, item.activeIcon, item.inactiveIcon]);
   return (
-    <div>
-      <Link to={item.to}>{Icon}</Link>
+    <div
+      style={{ pointerEvents: isActive ? 'none' : undefined }}
+      onClick={() => onClick(item.menu)}
+    >
+      {Icon}
     </div>
   );
 };
@@ -72,16 +65,29 @@ const styles = stylex.create({
   },
 });
 
-interface BottomNavigationProps {
-  show: boolean;
+export interface BottomNavigationProps {
+  visible: boolean;
+  active: Menu | null;
+  onChange: (menu: Menu) => void;
 }
 
-const BottomNavigation: React.FC<BottomNavigationProps> = ({ show }) => {
+const BottomNavigation: React.FC<BottomNavigationProps> = ({ visible, active, onChange }) => {
+  const handleClickMenu = useCallback(
+    (menu: Menu) => {
+      onChange(menu);
+    },
+    [onChange]
+  );
   return (
-    show && (
+    visible && (
       <div {...stylex.props(styles.container)}>
         {NAVIGATION_ITEMS.map((item, index) => (
-          <BottomNavigationAction key={index} item={item} />
+          <BottomNavigationAction
+            key={index}
+            item={item}
+            isActive={active === item.menu}
+            onClick={handleClickMenu}
+          />
         ))}
       </div>
     )
