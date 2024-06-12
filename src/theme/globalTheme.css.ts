@@ -1,4 +1,4 @@
-import { createGlobalTheme, createTheme, createThemeContract, style } from '@vanilla-extract/css';
+import { createGlobalTheme, createTheme, createThemeContract } from '@vanilla-extract/css';
 
 export const global = createGlobalTheme(':root', {
   color: {
@@ -41,9 +41,19 @@ export const lightTheme = createTheme(themeColor, {
 
 export const darkTheme = createTheme(themeColor, {
   color: {
-    secondary100: 'orange',// Dark모드 추가시 변경
-    secondary200: 'blue',// Dark모드 추가시 변경
+    secondary100: 'orange', // Dark모드 추가시 변경
+    secondary200: 'blue', // Dark모드 추가시 변경
   },
 });
 
-export const vars = { ...global, themeColor }
+export const vars = {
+  ...global,
+  color: {
+    ...global.color,
+    ...themeColor.color,
+  },
+  // TODO: deprecated. Remove this line after migration.
+  themeColor,
+};
+
+export type Color = keyof typeof vars.color;
