@@ -11,7 +11,7 @@ import * as stylex from '@stylexjs/stylex';
 import { layout } from '../../theme/layout.stylex';
 import { colors } from '../../theme/colors.stylex';
 
-type Menu = 'wish' | 'message' | 'my';
+type Menu = 'wishlist' | 'message' | 'my';
 type NavigationItem = {
   menu: Menu;
   activeIcon: React.ReactNode;
@@ -20,7 +20,7 @@ type NavigationItem = {
 
 const NAVIGATION_ITEMS: NavigationItem[] = [
   { menu: 'message', activeIcon: <IconMessageFilled />, inactiveIcon: <IconMessage /> },
-  { menu: 'wish', activeIcon: <IconHeartFilled />, inactiveIcon: <IconHeart /> },
+  { menu: 'wishlist', activeIcon: <IconHeartFilled />, inactiveIcon: <IconHeart /> },
   { menu: 'my', activeIcon: <IconPersonFilled />, inactiveIcon: <IconPerson /> },
 ];
 
