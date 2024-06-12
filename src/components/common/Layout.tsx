@@ -1,19 +1,12 @@
-import * as stylex from '@stylexjs/stylex';
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useState } from 'react';
+import { darkTheme, lightTheme } from '@/theme/globalTheme.css';
+import { layout } from './Layout.css';
 
-const MAX_WIDTH = 1280;
-const styles = stylex.create({
-  layout: {
-    maxWidth: MAX_WIDTH,
-    paddingBottom: 30,
-    marginRight: 'auto',
-    marginLeft: 'auto',
-    height: '100%',
-  },
-});
 
 const Layout: React.FC<PropsWithChildren> = ({ children }) => {
-  return <main {...stylex.props(styles.layout)}>{children}</main>;
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+  return <main className={`${layout} ${isDarkTheme ? darkTheme : lightTheme}`}>{children}</main>;
 };
 
 export default Layout;
