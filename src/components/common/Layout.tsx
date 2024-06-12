@@ -1,25 +1,11 @@
-import * as stylex from '@stylexjs/stylex';
-import { PropsWithChildren } from 'react';
-import { layout } from '../../theme/layout.stylex';
-import TopNavigation from './TopNavigation';
-
-const styles = stylex.create({
-  layout: {
-    maxWidth: layout.maxWidth,
-    paddingBottom: layout.bottomNavigationHeight,
-    marginRight: 'auto',
-    marginLeft: 'auto',
-    height: '100%',
-  },
-});
+import { PropsWithChildren, useState } from 'react';
+import { darkTheme, lightTheme } from '@/theme/globalTheme.css';
+import { layout } from './Layout.css';
 
 const Layout: React.FC<PropsWithChildren> = ({ children }) => {
-  return (
-    <main {...stylex.props(styles.layout)}>
-      <TopNavigation />
-      {children}
-    </main>
-  );
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+  return <main className={`${layout} ${isDarkTheme ? darkTheme : lightTheme}`}>{children}</main>;
 };
 
 export default Layout;
