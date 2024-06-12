@@ -1,4 +1,18 @@
-import { styleVariants } from '@vanilla-extract/css';
+import { styleVariants, globalFontFace } from '@vanilla-extract/css';
+
+export const Pretendard = 'Pretendard';
+
+globalFontFace(Pretendard, {
+  src: "url('/fonts/Pretendard-Regular.woff2') format('woff2')",
+  fontStyle: 'normal',
+  fontWeight: 'normal'
+})
+
+globalFontFace(Pretendard, {
+  src: "url('/fonts/Pretendard-Bold.woff2') format('woff2');",
+	fontStyle: 'normal',
+	fontWeight: 'bold',
+})
 
 export const typography = styleVariants({
   heading1: {

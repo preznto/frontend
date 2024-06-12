@@ -1,4 +1,5 @@
-import '@/App.css';
+import '@/reset.css';
+import '@/App.css'
 import '@/theme/globalTheme.css'
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
