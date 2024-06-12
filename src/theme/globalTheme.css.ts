@@ -23,6 +23,12 @@ export const global = createGlobalTheme(':root', {
     gray04: '#F5F5F5',
     red: '#FF0000',
   },
+  layout: {
+    maxWidth: '1280px',
+    topNavigationHeight: '48px',
+    bottomNavigationHeight: '60px',
+    zIndexNavigation: '10',
+  },
 });
 
 const themeColor = createThemeContract({
