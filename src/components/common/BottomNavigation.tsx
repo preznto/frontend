@@ -7,9 +7,7 @@ import {
   IconPersonFilled,
 } from './icons';
 import { useCallback, useMemo } from 'react';
-import * as stylex from '@stylexjs/stylex';
-import { layout } from '../../theme/layout.stylex';
-import { colors } from '../../theme/colors.stylex';
+import * as styles from './BottomNavigation.css';
 
 type Menu = 'wishlist' | 'message' | 'my';
 type NavigationItem = {
@@ -48,23 +46,6 @@ const BottomNavigationAction: React.FC<BottomNavigationActionProps> = ({
   );
 };
 
-const styles = stylex.create({
-  container: {
-    position: 'fixed',
-    maxWidth: layout.maxWidth,
-    width: '100%',
-    bottom: 0,
-    left: 'auto',
-    right: 'auto',
-    display: 'flex',
-    justifyContent: 'space-around',
-    padding: '12px 0 8px',
-    height: layout.bottomNavigationHeight,
-    borderTop: '1px solid ' + colors.black08,
-    zIndex: layout.zIndexNavigation,
-  },
-});
-
 export interface BottomNavigationProps {
   visible: boolean;
   active: Menu | null;
@@ -80,7 +61,7 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({ visible, active, on
   );
   return (
     visible && (
-      <div {...stylex.props(styles.container)}>
+      <div className={styles.container}>
         {NAVIGATION_ITEMS.map((item, index) => (
           <BottomNavigationAction
             key={index}
