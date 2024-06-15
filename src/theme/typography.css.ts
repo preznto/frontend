@@ -15,42 +15,42 @@ globalFontFace(Pretendard, {
 })
 
 export const typography = styleVariants({
-  heading1: {
+  heading28: {
     fontSize: 28,
     fontWeight: 'bold',
     lineHeight: '36px',
   },
-  heading2: {
+  heading24: {
     fontSize: 24,
     fontWeight: 'bold',
     lineHeight: '32px',
   },
-  heading3: {
+  heading20: {
     fontSize: 20,
     fontWeight: 'bold',
     lineHeight: '30px',
   },
-  body1: {
+  body18: {
     fontSize: 18,
     fontWeight: 'normal',
     lineHeight: '26px',
   },
-  body2: {
+  body16: {
     fontSize: 16,
     fontWeight: 'normal',
     lineHeight: '24px',
   },
-  body3: {
+  body14: {
     fontSize: 14,
     fontWeight: 'normal',
     lineHeight: '22px',
   },
-  body4: {
+  body12: {
     fontSize: 12,
     fontWeight: 'normal',
     lineHeight: '18px',
   },
-  body5: {
+  body10: {
     fontSize: 10,
     fontWeight: 'normal',
     lineHeight: '11px',

@@ -1,9 +1,9 @@
-import type { StyleXStyles } from '@stylexjs/stylex';
 import React, { ElementType } from 'react';
 import { Typography, typography } from '@/theme/typography.css';
 import clsx from 'clsx';
 import { VariantProps } from './base.css';
 import { vars } from '@/theme/globalTheme.css';
+import { CSSProperties } from '@vanilla-extract/css';
 
 interface TypographyProps
   extends VariantProps,
@@ -11,7 +11,7 @@ interface TypographyProps
   as?: ElementType;
   children: React.ReactNode;
   className?: string;
-  style?: StyleXStyles;
+  style?: CSSProperties;
 }
 
 const withTypographyBase = (el: ElementType, variant: Typography) => {
