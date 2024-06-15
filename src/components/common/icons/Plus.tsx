@@ -6,14 +6,14 @@ const SvgPlus = (props: SVGProps<SVGSVGElement>) => (
       height={12}
       x={2}
       y={2}
-      stroke="#111"
+      stroke="current"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={1.5}
       rx={6}
     />
     <path
-      stroke="#111"
+      stroke="current"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={1.5}
