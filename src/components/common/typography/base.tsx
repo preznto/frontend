@@ -1,30 +1,18 @@
-import type { StyleXStyles } from '@stylexjs/stylex';
-import { Color, colors } from '@/theme/colors.stylex';
 import React, { ElementType } from 'react';
-import * as stylex from '@stylexjs/stylex';
-import { Typography, typography } from '@/theme/typography.stylex';
+import { Typography, typography } from '@/theme/typography.css';
+import clsx from 'clsx';
+import { VariantProps } from './base.css';
+import { vars } from '@/theme/globalTheme.css';
+import { CSSProperties } from '@vanilla-extract/css';
 
-type FontWeight = 'normal' | 'bold';
-
-interface VariantProps {
-  fw?: FontWeight;
-  color?: Color;
-}
 interface TypographyProps
   extends VariantProps,
     Omit<React.HTMLProps<HTMLElement>, 'color' | 'style' | 'as'> {
   as?: ElementType;
   children: React.ReactNode;
   className?: string;
-  style?: StyleXStyles;
+  style?: CSSProperties;
 }
-
-const styles = stylex.create({
-  variant: (variant: VariantProps) => ({
-    color: colors[variant.color || 'black100'],
-    fontWeight: variant.fw,
-  }),
-});
 
 const withTypographyBase = (el: ElementType, variant: Typography) => {
   const Typography: React.FC<TypographyProps> = ({
@@ -39,8 +27,8 @@ const withTypographyBase = (el: ElementType, variant: Typography) => {
     return React.createElement(
       as,
       {
-        className,
-        ...stylex.props(style, typography[variant], styles.variant({ fw, color })),
+        className: clsx(className, typography[variant]),
+        style: { fontWeight: fw, color: color ? vars.color[color] : undefined, ...style },
         ...props,
       },
       children

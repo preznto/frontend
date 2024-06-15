@@ -1,10 +1,10 @@
 import withTypographyBase from './base';
 
-export const Heading1 = withTypographyBase('h1', 'heading1');
-export const Heading2 = withTypographyBase('h2', 'heading2');
-export const Heading3 = withTypographyBase('h3', 'heading3');
-export const Body1 = withTypographyBase('p', 'body1');
-export const Body2 = withTypographyBase('p', 'body2');
-export const Body3 = withTypographyBase('p', 'body3');
-export const Body4 = withTypographyBase('p', 'body4');
-export const Body5 = withTypographyBase('span', 'body5');
+export const Heading28 = withTypographyBase('h1', 'heading28');
+export const Heading24 = withTypographyBase('h2', 'heading24');
+export const Heading20 = withTypographyBase('h3', 'heading20');
+export const Body18 = withTypographyBase('p', 'body18');
+export const Body16 = withTypographyBase('p', 'body16');
+export const Body14 = withTypographyBase('p', 'body14');
+export const Body12 = withTypographyBase('p', 'body12');
+export const Body10 = withTypographyBase('span', 'body10');
