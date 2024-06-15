@@ -6,3 +6,4 @@ export { default as IconMessage } from './Message';
 export { default as IconMessageFilled } from './MessageFilled';
 export { default as IconPerson } from './Person';
 export { default as IconPersonFilled } from './PersonFilled';
+export { default as IconPlus } from './Plus';
