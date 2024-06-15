@@ -15,9 +15,9 @@
     "@vanilla-extract/css": "^1.15.2",
     "@vanilla-extract/recipes": "^0.5.3",
     "axios": "^1.6.8",
+    "clsx": "^2.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "stylex": "^0.3.0",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
@@ -36,12 +36,6 @@
     "eslint-plugin-react-refresh": "^0.4.6",
     "prettier": "^3.2.5",
     "typescript": "^5.2.2",
-    "vite": "^5.2.0",
-    "vite-plugin-stylex": "^0.8.3"
-  },
-  "overrides": {
-    "vite-plugin-stylex": {
-      "@stylexjs/babel-plugin": "^0.6.1"
-    }
+    "vite": "^5.2.0"
   }
 }
