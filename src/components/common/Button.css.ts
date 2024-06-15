@@ -32,7 +32,7 @@ export const buttonStyle = recipe({
         color: vars.color.black40,
       },
     },
-    pressedButtonStyle(vars.color.red),
+    pressedButtonStyle(vars.color.white64),
   ],
   variants: {
     type: {
