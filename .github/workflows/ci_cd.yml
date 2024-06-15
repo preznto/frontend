@@ -2,7 +2,7 @@ name: CI/CD using github actions & docker
 
 on:
   push:
-    branches: ["master", "dev"]
+    branches: ['master', 'dev']
 
 permissions:
   contents: read
@@ -23,7 +23,7 @@ jobs:
         run: yarn build
 
       - name: Docker build & push to Docker Hub
-        # if: contains(github.ref, 'master') 차후 dev / prod 운영시 주석해제
+        if: contains(github.ref, 'dev')
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/preznto:${{ github.sha }} .
