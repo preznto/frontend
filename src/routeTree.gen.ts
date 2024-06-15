@@ -44,18 +44,30 @@ const MyWishlistWishlistIdItemsWishitemIdRoute =
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/my/wishlist/create': {
+      id: '/my/wishlist/create'
+      path: '/my/wishlist/create'
+      fullPath: '/my/wishlist/create'
       preLoaderRoute: typeof MyWishlistCreateImport
       parentRoute: typeof rootRoute
     }
     '/my/wishlist/$wishlistId/items': {
+      id: '/my/wishlist/$wishlistId/items'
+      path: '/my/wishlist/$wishlistId/items'
+      fullPath: '/my/wishlist/$wishlistId/items'
       preLoaderRoute: typeof MyWishlistWishlistIdItemsImport
       parentRoute: typeof rootRoute
     }
     '/my/wishlist/$wishlistId/': {
+      id: '/my/wishlist/$wishlistId/'
+      path: '/my/wishlist/$wishlistId'
+      fullPath: '/my/wishlist/$wishlistId'
       preLoaderRoute: typeof MyWishlistWishlistIdIndexImport
       parentRoute: typeof rootRoute
     }
     '/my/wishlist/$wishlistId/items/$wishitemId': {
+      id: '/my/wishlist/$wishlistId/items/$wishitemId'
+      path: '/$wishitemId'
+      fullPath: '/my/wishlist/$wishlistId/items/$wishitemId'
       preLoaderRoute: typeof MyWishlistWishlistIdItemsWishitemIdImport
       parentRoute: typeof MyWishlistWishlistIdItemsImport
     }
@@ -64,12 +76,43 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren([
+export const routeTree = rootRoute.addChildren({
   MyWishlistCreateRoute,
-  MyWishlistWishlistIdItemsRoute.addChildren([
+  MyWishlistWishlistIdItemsRoute: MyWishlistWishlistIdItemsRoute.addChildren({
     MyWishlistWishlistIdItemsWishitemIdRoute,
-  ]),
+  }),
   MyWishlistWishlistIdIndexRoute,
-])
+})
 
 /* prettier-ignore-end */
+
+/* ROUTE_MANIFEST_START
+{
+  "routes": {
+    "__root__": {
+      "filePath": "__root.tsx",
+      "children": [
+        "/my/wishlist/create",
+        "/my/wishlist/$wishlistId/items",
+        "/my/wishlist/$wishlistId/"
+      ]
+    },
+    "/my/wishlist/create": {
+      "filePath": "my/wishlist.create.tsx"
+    },
+    "/my/wishlist/$wishlistId/items": {
+      "filePath": "my/wishlist.$wishlistId.items.tsx",
+      "children": [
+        "/my/wishlist/$wishlistId/items/$wishitemId"
+      ]
+    },
+    "/my/wishlist/$wishlistId/": {
+      "filePath": "my/wishlist.$wishlistId.index.tsx"
+    },
+    "/my/wishlist/$wishlistId/items/$wishitemId": {
+      "filePath": "my/wishlist.$wishlistId.items.$wishitemId.tsx",
+      "parent": "/my/wishlist/$wishlistId/items"
+    }
+  }
+}
+ROUTE_MANIFEST_END */
