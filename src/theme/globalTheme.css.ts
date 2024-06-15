@@ -1,4 +1,4 @@
-import { createGlobalTheme, createTheme, createThemeContract, style } from '@vanilla-extract/css';
+import { createGlobalTheme, createTheme, createThemeContract } from '@vanilla-extract/css';
 
 export const global = createGlobalTheme(':root', {
   color: {
@@ -23,6 +23,12 @@ export const global = createGlobalTheme(':root', {
     gray04: '#F5F5F5',
     red: '#FF0000',
   },
+  layout: {
+    maxWidth: '1280px',
+    topNavigationHeight: '48px',
+    bottomNavigationHeight: '60px',
+    zIndexNavigation: '10',
+  },
 });
 
 const themeColor = createThemeContract({
@@ -41,9 +47,9 @@ export const lightTheme = createTheme(themeColor, {
 
 export const darkTheme = createTheme(themeColor, {
   color: {
-    secondary100: 'orange',// Dark모드 추가시 변경
-    secondary200: 'blue',// Dark모드 추가시 변경
+    secondary100: 'orange', // Dark모드 추가시 변경
+    secondary200: 'blue', // Dark모드 추가시 변경
   },
 });
 
-export const vars = { ...global, themeColor }
+export const vars = { ...global, themeColor };

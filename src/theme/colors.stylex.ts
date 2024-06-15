@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 
-export const colors = stylex.defineVars({
+export const colorMap = {
   black100: '#111111',
   black80: '#111111CC',
   black64: '#111111A3',
@@ -23,6 +23,7 @@ export const colors = stylex.defineVars({
   red: '#FF0000',
   secondary100: '#0075FF',
   secondary200: '#EBF4FF',
-} as const);
+} as const
+export const colors = stylex.defineVars(colorMap);
 
 export type Color = keyof typeof colors.__tokens;

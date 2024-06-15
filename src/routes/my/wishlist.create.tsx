@@ -1,5 +1,11 @@
+import useTopNavigation from '@/hooks/useTopNavigation';
 import { createFileRoute } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/my/wishlist/create')({
-  component: () => <div>Hello /my/wishlist/create!</div>,
+  component: () => <Page />,
 });
+
+const Page = () => {
+  useTopNavigation({ left: 'back' });
+  return <div>Hello /my/wishlist/create!</div>;
+};
