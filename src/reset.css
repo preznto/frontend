@@ -127,25 +127,3 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-* {
-  box-sizing: border-box;
-}
-/* End of reset css*/
-
-@font-face {
-  font-family: 'Pretendard';
-  src: url('/fonts/Pretendard-Regular.woff2') format('woff2');
-  font-style: normal;
-  font-weight: normal;
-}
-@font-face {
-  font-family: 'Pretendard';
-  src: url('/fonts/Pretendard-Bold.woff2') format('woff2');
-  font-style: normal;
-  font-weight: bold;
-}
-
-body {
-  font-family: 'Pretendard';
-  font-weight: normal;
-}
