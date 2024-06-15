@@ -53,19 +53,19 @@ export const buttonStyle = recipe({
     size: {
       large: [
         {
-          height: '56px',
+          height: 56,
         },
       ],
       medium: [
         {
-          width: '57px',
-          height: '40px',
+          width: 57,
+          height: 40,
         },
       ],
       small: [
         {
-          width: '49px',
-          height: '32px',
+          width: 49,
+          height: 32,
         },
       ],
     },
@@ -78,20 +78,20 @@ export const spinner = recipe({
     size: {
       large: [
         {
-          height: '32px',
-          width: '32px',
+          height: 32,
+          width: 32,
         },
       ],
       medium: [
         {
-          width: '24px',
-          height: '24px',
+          width: 24,
+          height: 24,
         },
       ],
       small: [
         {
-          width: '24px',
-          height: '24px',
+          width: 24,
+          height: 24,
         },
       ],
     },
