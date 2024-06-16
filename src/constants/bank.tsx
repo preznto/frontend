@@ -1,102 +1,102 @@
 import { IconBank } from '@/components/common/icons';
 
-type AccountItem = {
-  key: string;
+type BankOption = {
+  value: string;
   label: string;
   icon: JSX.Element;
 };
 
-export const ACCOUNT_MAP = [
+export const BANK_OPTIONS = [
   {
-    key: 'kb',
+    value: 'kb',
     label: '국민',
     icon: <IconBank.국민 />,
   },
   {
-    key: 'nh',
+    value: 'nh',
     label: '농협',
     icon: <IconBank.농협 />,
   },
   {
-    key: 'shinhan',
+    value: 'shinhan',
     label: '신한',
     icon: <IconBank.신한 />,
   },
   {
-    key: 'woori',
+    value: 'woori',
     label: '우리',
     icon: <IconBank.우리 />,
   },
   {
-    key: 'hana',
+    value: 'hana',
     label: '하나',
     icon: <IconBank.하나 />,
   },
   {
-    key: 'ibk',
+    value: 'ibk',
     label: '기업',
     icon: <IconBank.기업 />,
   },
   {
     label: '산업',
-    key: 'sib',
+    value: 'sib',
     icon: <IconBank.산업 />,
   },
   {
     label: '새마을금고',
-    key: 'saemaeul',
+    value: 'saemaeul',
     icon: <IconBank.새마을금고 />,
   },
   {
     label: '제일',
-    key: 'first',
+    value: 'first',
     icon: <IconBank.제일 />,
   },
   {
     label: '수협',
-    key: 'suhyup',
+    value: 'suhyup',
     icon: <IconBank.수협 />,
   },
   {
     label: '신협',
-    key: 'shinhyup',
+    value: 'shinhyup',
     icon: <IconBank.신협 />,
   },
   {
     label: '씨티뱅크',
-    key: 'citibank',
+    value: 'citibank',
     icon: <IconBank.씨티 />,
   },
   {
     label: '케이뱅크',
-    key: 'keibank',
+    value: 'keibank',
     icon: <IconBank.케이 />,
   },
   {
     label: '카카오뱅크',
-    key: 'kakaobank',
+    value: 'kakaobank',
     icon: <IconBank.카카오 />,
   },
   {
     label: '토스',
-    key: 'toss',
+    value: 'toss',
     icon: <IconBank.토스 />,
   },
   {
     label: '광주',
-    key: 'gwangju',
+    value: 'gwangju',
     icon: <IconBank.광주 />,
   },
   {
     label: '대구',
-    key: 'daegu',
+    value: 'daegu',
     icon: <IconBank.대구 />,
   },
   {
     label: '부산',
-    key: 'busan',
+    value: 'busan',
     icon: <IconBank.부산 />,
   },
-] as const satisfies AccountItem[];
+] as const satisfies BankOption[];
 
-export type BankKey = (typeof ACCOUNT_MAP)[number]['key'];
+export type BankValue = (typeof BANK_OPTIONS)[number]['value'];
