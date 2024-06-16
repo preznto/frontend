@@ -6,5 +6,5 @@ export const layout = style({
   paddingBottom: 30,
   marginRight: 'auto',
   marginLeft: 'auto',
-  height: '100%',
+  height: '100vh',
 });
