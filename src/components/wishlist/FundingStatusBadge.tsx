@@ -22,11 +22,16 @@ const STATUS_COLOR_DICT: Record<
 };
 
 interface FundingStatusBadgeProps {
+  className?: string;
   status: FundingStatus;
 }
-const FundingStatusBadge: React.FC<FundingStatusBadgeProps> = ({ status }) => {
+const FundingStatusBadge: React.FC<FundingStatusBadgeProps> = ({ className, status }) => {
   return (
-    <Badge bgColor={STATUS_COLOR_DICT[status].bg} textColor={STATUS_COLOR_DICT[status].text}>
+    <Badge
+      className={className}
+      bgColor={STATUS_COLOR_DICT[status].bg}
+      textColor={STATUS_COLOR_DICT[status].text}
+    >
       {STATUS_DICT[status]}
     </Badge>
   );
