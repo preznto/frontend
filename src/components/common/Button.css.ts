@@ -23,7 +23,7 @@ export const buttonStyle = recipe({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      color: 'white',
+      color: vars.color.white100,
       width: '100%',
       marginBottom: 24,
 
