@@ -27,7 +27,7 @@ export const textButton = recipe({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      stroke: 'black',
+      stroke: vars.color.black100,
 
       ':disabled': {
         color: vars.color.black40,
