@@ -19,14 +19,14 @@ const ButtonIcons = {
   plus: SvgPlus,
 };
 
-const TextButton = ({
+const TextButton: React.FC<Props> = ({
   onClick,
   disabled = false,
   size,
   children,
   iconName,
   link = false,
-}: Props) => {
+}) => {
   const TypoComponent = size === 'medium' ? Body16 : Body14;
   const IconComponent = iconName && ButtonIcons[iconName];
   return (

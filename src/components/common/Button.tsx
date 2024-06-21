@@ -14,14 +14,14 @@ type Props = {
 
 type VariantType = RecipeVariants<typeof buttonStyle>;
 
-const Button = ({
+const Button: React.FC<Props> = ({
   onClick,
   disabled = false,
   isLoading = false,
   type = 'primary',
   size,
   children,
-}: Props) => {
+}) => {
   const TypoComponent = size === 'large' ? Body18 : Body14;
 
   return (
