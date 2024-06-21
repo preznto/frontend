@@ -19,7 +19,7 @@ const Button = ({
   disabled = false,
   isLoading = false,
   type = 'primary',
-  size = 'large',
+  size,
   children,
 }: Props) => {
   const TypoComponent = size === 'large' ? Body18 : Body14;
