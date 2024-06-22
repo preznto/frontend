@@ -2,6 +2,7 @@ import { Body14 } from '@/components/common/typography';
 import WishItem, { WishItemType } from '@/components/wishlist/WishItem';
 import * as styles from './WishListTab.css';
 import Empty from '@/components/common/Empty';
+import TextButton from '../common/TextButton';
 
 interface WishListTabProps {
   my?: boolean;
@@ -42,7 +43,7 @@ const WishListTab: React.FC<WishListTabProps> = ({ my }) => {
           </Body14>
           <Body14>개의 위시템</Body14>
         </span>
-        {my && <button>상품추가</button>}
+        {my && <TextButton iconName="plus">상품추가</TextButton>}
       </div>
 
       <ol className={styles.list}>

@@ -38,7 +38,7 @@ const BottomNavigationAction: React.FC<BottomNavigationActionProps> = ({
   }, [isActive, item.activeIcon, item.inactiveIcon]);
   return (
     <div
-      style={{ pointerEvents: isActive ? 'none' : undefined }}
+      style={{ pointerEvents: isActive ? 'none' : undefined, cursor: 'pointer' }}
       onClick={() => onClick(item.menu)}
     >
       {Icon}
