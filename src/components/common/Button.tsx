@@ -9,7 +9,7 @@ type Props = {
   onClick?: () => void;
   children: React.ReactNode;
   disabled?: boolean;
-  isLoading?: boolean;
+  loading?: boolean;
 } & VariantType;
 
 type VariantType = RecipeVariants<typeof buttonStyle>;
@@ -17,7 +17,7 @@ type VariantType = RecipeVariants<typeof buttonStyle>;
 const Button: React.FC<Props> = ({
   onClick,
   disabled = false,
-  isLoading = false,
+  loading = false,
   type = 'primary',
   size,
   children,
@@ -26,7 +26,7 @@ const Button: React.FC<Props> = ({
 
   return (
     <button onClick={onClick} disabled={disabled} className={buttonStyle({ type, size })}>
-      {isLoading ? (
+      {loading ? (
         <Lottie loop play animationData={spinnerLottie} className={spinner({ size })} />
       ) : (
         <TypoComponent fw="bold">{children}</TypoComponent>
