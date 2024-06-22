@@ -40,7 +40,7 @@ export const buttonStyle = recipe({
         backgroundColor: vars.color.black100,
       },
       secondary: {
-        backgroundColor: vars.themeColor.color.secondary100,
+        backgroundColor: vars.color.secondary100,
       },
       gray: [
         {
