@@ -25,6 +25,12 @@ const mockWishItems: WishItemType[] = [
     status: 'inactive',
   },
 ];
+
+/**
+ * @description 위시리스트 탭. 방문자와 어드민이 모두 사용하는 컴포넌트
+ * @param {boolean} my - 내 위시리스트인지 여부
+ *
+ */
 const WishListTab: React.FC<WishListTabProps> = ({ my }) => {
   return (
     <div className={styles.container}>
