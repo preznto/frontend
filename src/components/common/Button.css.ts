@@ -54,18 +54,22 @@ export const buttonStyle = recipe({
       large: [
         {
           height: 56,
+          padding: '16px 20px',
+          width: '100%',
         },
       ],
       medium: [
         {
-          width: 57,
           height: 40,
+          width: 'fit-content',
+          padding: '9px 16px',
         },
       ],
       small: [
         {
-          width: 49,
           height: 32,
+          width: 'fit-content',
+          padding: '5px 12px',
         },
       ],
     },
