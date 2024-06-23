@@ -63,3 +63,30 @@ export const progressBar = style([
   },
   progressBase,
 ]);
+
+export const fundingUserListSection = style({
+  borderTop: `8px solid ${vars.color.black04}`,
+  padding: '30px 20px 40px 20px',
+});
+
+export const fundingUserList = style({
+  listStyle: 'none',
+});
+
+export const fundingUserItemWrraper = style({
+  display: 'flex',
+  alignItems: 'center',
+  height: 78,
+  selectors: {
+    '&:not(:first-child)': {
+      // TODO: 확인 필요 정의되지 않은 컬러값
+      borderTop: `1px solid #F3F4F6`,
+    },
+  },
+});
+
+export const fudingUserImg = style({
+  height: 35,
+  width: 35,
+  marginRight: 16,
+});

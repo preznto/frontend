@@ -1,11 +1,14 @@
 import Badge from '@/components/common/Badge';
-import TopNavigation from '@/components/common/TopNavigation';
 import { Body12, Body14, Body16, Body18, Heading24 } from '@/components/common/typography';
 import useTopNavigation from '@/hooks/useTopNavigation';
 import React, { Fragment, SyntheticEvent } from 'react';
 import {
+  fudingUserImg,
   fundingAmount,
   fundingRate,
+  fundingUserItemWrraper,
+  fundingUserList,
+  fundingUserListSection,
   linkBtn,
   progress,
   progressBar,
@@ -72,32 +75,32 @@ const WishItemInfo = () => {
   );
 };
 
-const FundingUserList = () => {
-  const dummy = [
-    {
-      name: '멍뭉 1세',
-      price: '30000',
-    },
-    {
-      name: '도베르만 검정이',
-      price: '50000',
-    },
-    {
-      name: '도베르만 검정이',
-      price: '30000',
-    },
-  ];
+interface FundingUserListProp {
+  userList: FundingUser[];
+}
+
+// TODO: API 스펙 확인 후 변경
+interface FundingUser {
+  name: string;
+  price: number;
+}
+
+const FundingUserList: React.FC<FundingUserListProp> = ({ userList }) => {
   return (
-    <section>
-      <Body18>아래 친구들이 선물해줬어요!</Body18>
-      {dummy.length > 0 ? (
-        <li>
-          {dummy.map(({ name, price }) => (
-            <li>
-              <img src="" alt="" />
+    <section className={fundingUserListSection}>
+      <Body18 fw="bold">아래 친구들이 선물해줬어요!</Body18>
+      {userList.length > 0 ? (
+        <li className={fundingUserList}>
+          {userList.map(({ name, price }) => (
+            <li className={fundingUserItemWrraper}>
+              <img
+                className={fudingUserImg}
+                src="https://picsum.photos/id/237/1000/1000"
+                alt="유저이미지"
+              />
               <div>
                 <Body16>{name}</Body16>
-                <Body16>{price}</Body16>
+                <Body14 fw="bold">{price}원</Body14>
               </div>
             </li>
           ))}
@@ -110,14 +113,27 @@ const FundingUserList = () => {
 };
 
 const MyWishItemDetailPage = () => {
+  const dummy = [
+    {
+      name: '멍뭉 1세',
+      price: 30000,
+    },
+    {
+      name: '도베르만 검정이',
+      price: 50000,
+    },
+    {
+      name: '도베르만 검정이',
+      price: 30000,
+    },
+  ];
   useTopNavigation({ left: 'back' });
   return (
     <Fragment>
-      <TopNavigation />
       <main>
         <WishItemImage />
         <WishItemInfo />
-        <FundingUserList />
+        <FundingUserList userList={dummy} />
       </main>
     </Fragment>
   );
