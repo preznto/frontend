@@ -90,9 +90,9 @@ const FundingUserList: React.FC<FundingUserListProp> = ({ userList }) => {
     <section className={fundingUserListSection}>
       <Body18 fw="bold">아래 친구들이 선물해줬어요!</Body18>
       {userList.length > 0 ? (
-        <li className={fundingUserList}>
-          {userList.map(({ name, price }) => (
-            <li className={fundingUserItemWrraper}>
+        <ul className={fundingUserList}>
+          {userList.map(({ name, price }, index) => (
+            <li key={`${name}_${index}`} className={fundingUserItemWrraper}>
               <img
                 className={fudingUserImg}
                 src="https://picsum.photos/id/237/1000/1000"
@@ -104,7 +104,7 @@ const FundingUserList: React.FC<FundingUserListProp> = ({ userList }) => {
               </div>
             </li>
           ))}
-        </li>
+        </ul>
       ) : (
         <div>empty</div>
       )}
