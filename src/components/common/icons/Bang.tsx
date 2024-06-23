@@ -8,10 +8,10 @@ const SvgBang = (props: SVGProps<SVGSVGElement>) => (
       width="7.11111e-05"
       height="17.0667"
       stroke="#111111"
-      stroke-opacity="0.2"
-      stroke-width="5.68889"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeOpacity="0.2"
+      strokeWidth="5.68889"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <rect
       width={7.111}

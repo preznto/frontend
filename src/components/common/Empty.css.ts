@@ -12,4 +12,5 @@ export const contents = style({
   flexDirection: 'column',
   alignItems: 'center',
   gap: '20px',
+  textAlign: 'center',
 });
