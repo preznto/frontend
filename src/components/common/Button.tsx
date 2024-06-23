@@ -10,6 +10,7 @@ type Props = {
   children: React.ReactNode;
   disabled?: boolean;
   loading?: boolean;
+  className?: string;
 } & VariantType;
 
 type VariantType = RecipeVariants<typeof buttonStyle>;
@@ -21,11 +22,16 @@ const Button: React.FC<Props> = ({
   type = 'primary',
   size,
   children,
+  className,
 }) => {
   const TypoComponent = size === 'large' ? Body18 : Body14;
 
   return (
-    <button onClick={onClick} disabled={disabled} className={buttonStyle({ type, size })}>
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      className={`${buttonStyle({ type, size })} ${className}`}
+    >
       {loading ? (
         <Lottie loop play animationData={spinnerLottie} className={spinner({ size })} />
       ) : (
