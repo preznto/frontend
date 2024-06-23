@@ -17,7 +17,7 @@ export const linkBtn = style({
 });
 
 export const wishItemInfoSection = style({
-  padding: '24px 20px 20px 32px',
+  padding: '24px 20px 32px 20px',
 });
 
 export const wishItemNameWrraper = style({
