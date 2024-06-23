@@ -3,9 +3,22 @@ import TopNavigation from '@/components/common/TopNavigation';
 import { Body12, Body14, Body16, Body18, Heading24 } from '@/components/common/typography';
 import useTopNavigation from '@/hooks/useTopNavigation';
 import React, { Fragment, SyntheticEvent } from 'react';
-import { linkBtn, wishItemImageSection, wishItemImg } from './MyWishItemDetailPage.css';
+import {
+  fundingAmount,
+  fundingRate,
+  linkBtn,
+  progress,
+  progressBar,
+  progressBarWrraper,
+  wishItemImageSection,
+  wishItemImg,
+  wishItemInfoSection,
+  wishItemNameWrraper,
+  wishItemPriceWrraper,
+} from './MyWishItemDetailPage.css';
 import Button from '@/components/common/Button';
 import defaultItemImg from '@/assets/defaultItemImg.png';
+import { assignInlineVars } from '@vanilla-extract/dynamic';
 
 const WishItemImage = () => {
   const handleImageError = (e: SyntheticEvent<HTMLImageElement, Event>) => {
@@ -31,28 +44,30 @@ const WishItemImage = () => {
   );
 };
 
-const WishListInfo = () => {
+const WishItemInfo = () => {
   return (
-    <section>
-      <div className="">
+    <section className={wishItemInfoSection}>
+      <div className={wishItemNameWrraper}>
         <Body18>LEXON MINA 무드등 조명 램프</Body18>
         <Badge color="blue">펀딩중</Badge>
       </div>
       <div>
-        <Body12>펀딩 달성 금액</Body12>
-        <div className="">
-          <Heading24>70000d원</Heading24>
-          <Body14>/ 12000원</Body14>
-          <Body14 fw="bold">65% 달성</Body14>
+        <Body12 color="black64">펀딩 달성 금액</Body12>
+        <div className={wishItemPriceWrraper}>
+          <Heading24 className={fundingAmount}>70,000원</Heading24>
+          <Body14 color="black64">/ 12,000원</Body14>
+          <Body14 className={fundingRate} fw="bold">
+            65% 달성
+          </Body14>
         </div>
       </div>
-      <div>
-        <div></div>
+      <div className={progressBarWrraper}>
+        <div className={progressBar} style={assignInlineVars({ [progress]: '30%' })} />
       </div>
-      <p>
+      <Body16 color="black64">
         기타 설명을 입력하는
         어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구
-      </p>
+      </Body16>
     </section>
   );
 };
@@ -100,8 +115,8 @@ const MyWishItemDetailPage = () => {
     <Fragment>
       <TopNavigation />
       <main>
-        <div>여기 이미지</div>
-        <WishListInfo />
+        <WishItemImage />
+        <WishItemInfo />
         <FundingUserList />
       </main>
     </Fragment>
