@@ -6,6 +6,7 @@ export const badgeStyle = recipe({
     color: vars.color.white100,
     borderRadius: 4,
     width: 'fit-content',
+    height: 'fit-content',
     padding: '2.5px 4px',
   },
   variants: {
