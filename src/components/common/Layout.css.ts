@@ -1,4 +1,4 @@
-import { vars } from '@/theme/globalTheme.css';
+import vars from '@/theme/globalTheme.css';
 import { style } from '@vanilla-extract/css';
 
 export const layout = style({
