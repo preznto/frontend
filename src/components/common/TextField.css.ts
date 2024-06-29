@@ -90,13 +90,20 @@ export const helperText = styleVariants({
   disabled: [helperTextBase, { color: colors.black40 }],
 });
 
-export const unit = style({
+export const unitBase = style({
   position: 'absolute',
   display: 'inline-flex',
   alignItems: 'center',
   right: '20px',
   height: '100%',
 });
+
+export const unitDisabled = style([
+  unitBase,
+  {
+    color: colors.black40,
+  },
+]);
 
 export const clearBtn = style({
   position: 'absolute',

@@ -91,7 +91,7 @@ const TextField = (props: TextFieldProps) => {
           ref={inputEl}
         />
         {unit ? (
-          <span className={styles.unit}>{unit}</span>
+          <span className={!disabled ? styles.unitBase : styles.unitDisabled}>{unit}</span>
         ) : (
           showClearBtn && (
             <button className={styles.clearBtn} onClick={clearInput}>
