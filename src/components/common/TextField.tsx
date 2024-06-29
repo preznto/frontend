@@ -52,7 +52,7 @@ const TextField = (props: TextFieldProps) => {
   } = useController({
     name,
     control,
-    rules: rules ?? validation,
+    rules: Object.assign(rules ?? {}, validation ?? {}),
   });
 
   const { resetField } = useFormContext();
