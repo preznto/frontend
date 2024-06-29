@@ -37,7 +37,6 @@ export const inputBase = style([
     },
     '::placeholder': {
       color: colors.black64,
-      fontSize: typography.body12,
     },
     ':focus': {
       backgroundColor: colors.secondary200,
