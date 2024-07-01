@@ -52,14 +52,11 @@ export const darkTheme = createTheme(themeColor, {
   },
 });
 
-export const vars = {
-  ...global,
-  color: {
-    ...global.color,
-    ...themeColor.color,
-  },
-  // TODO: deprecated. Remove this line after migration.
-  themeColor,
+export const colors = {
+  ...global.color,
+  ...themeColor.color,
 };
 
-export type Color = keyof typeof vars.color;
+export default global;
+
+export type Color = keyof typeof colors;
