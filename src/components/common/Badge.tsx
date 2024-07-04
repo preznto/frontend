@@ -18,7 +18,7 @@ const Badge: React.FC<BadgeProps> = ({ className, children, bgColor, textColor }
         [styles.bgColor]: vars.color[bgColor],
       })}
     >
-      <Body10 fw="bold" color={textColor} style={{ wordBreak: 'keep-all' }}>
+      <Body10 fw="bold" color={textColor} wordBreak="keep-all">
         {children}
       </Body10>
     </span>

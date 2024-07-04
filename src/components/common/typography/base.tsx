@@ -20,6 +20,7 @@ interface TypographyProps
   className?: string;
   style?: CSSProperties;
   maxLines?: number;
+  wordBreak?: CSSProperties['wordBreak'];
 }
 
 const withTypographyBase = (el: ElementType, variant: Typography) => {
@@ -31,6 +32,7 @@ const withTypographyBase = (el: ElementType, variant: Typography) => {
     fw,
     color,
     maxLines,
+    wordBreak,
     ...props
   }) => {
     return React.createElement(
@@ -44,6 +46,7 @@ const withTypographyBase = (el: ElementType, variant: Typography) => {
             assignInlineVars({
               [styles.maxLines]: maxLines.toString(),
             })),
+          wordBreak,
           ...style,
         },
         ...props,
