@@ -2,6 +2,7 @@ import { Body12, Body14, Body16, Body18, Heading24 } from '@/components/common/t
 import useTopNavigation from '@/hooks/useTopNavigation';
 import React, { Fragment, SyntheticEvent } from 'react';
 import {
+  emptyIcon,
   fudingUserImg,
   fundingAmount,
   fundingRate,
@@ -22,6 +23,7 @@ import Button from '@/components/common/Button';
 import defaultItemImg from '@/assets/defaultItemImg.png';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import FundingStatusBadge from '@/components/wishlist/FundingStatusBadge';
+import Empty from '@/components/common/Empty';
 
 const WishItemImage = () => {
   const handleImageError = (e: SyntheticEvent<HTMLImageElement, Event>) => {
@@ -106,7 +108,9 @@ const FundingUserList: React.FC<FundingUserListProp> = ({ userList }) => {
           ))}
         </ul>
       ) : (
-        <div>empty</div>
+        <div className={emptyIcon}>
+          <Empty text="위시템이 아직 없어요." />
+        </div>
       )}
     </section>
   );

@@ -89,3 +89,7 @@ export const fudingUserImg = style({
   width: 35,
   marginRight: 16,
 });
+
+export const emptyIcon = style({
+  marginTop: 48,
+});
