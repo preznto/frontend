@@ -42,6 +42,7 @@ export const fundingRate = style({
 export const fundingUserListSection = style({
   borderTop: `8px solid ${vars.color.black04}`,
   padding: '30px 20px 40px 20px',
+  marginBottom: 20,
 });
 
 export const fundingUserList = style({
@@ -66,7 +67,7 @@ export const fudingUserImg = style({
 });
 
 export const emptyIcon = style({
-  marginTop: 48,
+  margin: '48px 0 20px 0',
 });
 
 export const wishItemDescription = style({
