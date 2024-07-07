@@ -2,7 +2,7 @@ import React, { ElementType } from 'react';
 import { Typography, typography } from '@/theme/typography.css';
 import clsx from 'clsx';
 import { VariantProps } from './base.css';
-import { vars } from '@/theme/globalTheme.css';
+import { colors } from '@/theme/globalTheme.css';
 import { CSSProperties } from '@vanilla-extract/css';
 
 interface TypographyProps
@@ -28,7 +28,7 @@ const withTypographyBase = (el: ElementType, variant: Typography) => {
       as,
       {
         className: clsx(className, typography[variant]),
-        style: { fontWeight: fw, color: color ? vars.color[color] : undefined, ...style },
+        style: { fontWeight: fw, color: color ? colors[color] : undefined, ...style },
         ...props,
       },
       children

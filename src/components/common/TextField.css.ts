@@ -64,12 +64,9 @@ export const inputError = style([
   },
 ]);
 
-const labelBase = style([
-  typography.body14,
-  {
-    marginBottom: '4px',
-  },
-]);
+const labelBase = style({
+  marginBottom: '4px',
+});
 
 export const label = styleVariants({
   default: [labelBase, { color: colors.black64 }],
@@ -77,12 +74,9 @@ export const label = styleVariants({
   disabled: [labelBase, { color: colors.black40 }],
 });
 
-const helperTextBase = style([
-  typography.body12,
-  {
-    marginTop: '4px',
-  },
-]);
+const helperTextBase = style({
+  marginTop: '4px',
+});
 
 export const helperText = styleVariants({
   default: [helperTextBase, { color: colors.black64 }],

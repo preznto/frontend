@@ -2,6 +2,7 @@ import { ChangeEvent, InputHTMLAttributes, useRef } from 'react';
 import * as styles from './TextField.css';
 import { useController, useFormContext } from 'react-hook-form';
 import { IconClear } from './icons';
+import { Body12, Body14 } from './typography';
 
 type InputChangeEvent = ChangeEvent<HTMLInputElement>;
 
@@ -76,7 +77,7 @@ const TextField = (props: TextFieldProps) => {
   return (
     <div className={styles.textFieldLayout}>
       <label htmlFor={name} className={styles.label[getLabelState()]}>
-        {label}
+        <Body14>{label}</Body14>
       </label>
       <div className={styles.inputWrapper}>
         <input
@@ -101,8 +102,8 @@ const TextField = (props: TextFieldProps) => {
         )}
       </div>
       <div className={styles.helperText[getLabelState()]}>
-        {helperText && <p>{helperText}</p>}
-        {invalid && <p>{errorText ?? error?.message}</p>}
+        {helperText && <Body12>{helperText}</Body12>}
+        {invalid && <Body12>{errorText ?? error?.message}</Body12>}
       </div>
     </div>
   );
