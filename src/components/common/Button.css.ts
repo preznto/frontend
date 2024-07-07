@@ -25,7 +25,6 @@ export const buttonStyle = recipe({
       justifyContent: 'center',
       color: vars.color.white100,
       width: '100%',
-      marginBottom: 24,
 
       ':disabled': {
         backgroundColor: vars.color.black08,
