@@ -1,19 +1,27 @@
-import React from 'react';
-import { badgeStyle } from './Badge.css';
-import { RecipeVariants } from '@vanilla-extract/recipes';
+import { Color, vars } from '@/theme/globalTheme.css';
 import { Body10 } from './typography';
+import * as styles from './Badge.css';
+import { assignInlineVars } from '@vanilla-extract/dynamic';
+import clsx from 'clsx';
+interface BadgeProps {
+  children: string;
+  bgColor: Color;
+  textColor: Color;
+  className?: string;
+}
 
-type Props = {
-  children: React.ReactNode;
-} & VariantType;
-
-type VariantType = RecipeVariants<typeof badgeStyle>;
-
-const Badge: React.FC<Props> = ({ children, color }) => {
+const Badge: React.FC<BadgeProps> = ({ className, children, bgColor, textColor }) => {
   return (
-    <Body10 fw="bold" className={badgeStyle({ color })}>
-      {children}
-    </Body10>
+    <span
+      className={clsx(styles.badge, className)}
+      style={assignInlineVars({
+        [styles.bgColor]: vars.color[bgColor],
+      })}
+    >
+      <Body10 fw="bold" color={textColor} wordBreak="keep-all">
+        {children}
+      </Body10>
+    </span>
   );
 };
 

@@ -1,11 +1,12 @@
-import { PropsWithChildren, useState } from 'react';
-import { darkTheme, lightTheme } from '@/theme/globalTheme.css';
+import { PropsWithChildren } from 'react';
+import { darkTheme } from '@/theme/globalTheme.css';
 import { layout } from './Layout.css';
 
 const Layout: React.FC<PropsWithChildren> = ({ children }) => {
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  // 다크/라이트 모드 추가시 주석해제
+  // const [isDarkTheme, setIsDarkTheme] = useState(false);
 
-  return <main className={`${layout} ${isDarkTheme ? darkTheme : lightTheme}`}>{children}</main>;
+  return <main className={`${layout} ${darkTheme}`}>{children}</main>;
 };
 
 export default Layout;

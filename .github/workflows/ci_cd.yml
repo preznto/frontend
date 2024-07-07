@@ -1,0 +1,64 @@
+name: CI/CD using github actions & docker
+
+on:
+  push:
+    branches: ['master', 'dev']
+
+permissions:
+  contents: read
+
+jobs:
+  CI-CD:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup node@22
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+      - name: Install dependencies
+        run: yarn install
+      - name: Build test
+        run: yarn build
+
+      - name: Docker build & push to Docker Hub
+        if: contains(github.ref, 'dev')
+        run: |
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/preznto:${{ github.sha }} .
+          docker push ${{ secrets.DOCKER_USERNAME }}/preznto:${{ github.sha }}
+
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        id: deploy
+        with:
+          host: ${{ secrets.HOST }} # EC2 퍼블릭 IPv4 DNS
+          username: ${{ secrets.USERNAME }} # ubuntu
+          password: ${{ secrets.PASSWORD }}
+          port: 22
+          key: ${{ secrets.PRIVATE_KEY }}
+          script: |
+            docker ps
+            docker stop frontend
+            docker pull ${{ secrets.DOCKER_USERNAME }}/preznto:${{ github.sha }}
+            docker run -d -p 8080:8080 --name frontend ${{ secrets.DOCKER_USERNAME }}/preznto:${{ github.sha }}
+            docker image prune -f
+
+      - name: Deploy Discord Notification
+        uses: sarisia/actions-status-discord@v1
+        if: ${{ success() }}
+        with:
+          title: ✅  Deploy success ✅
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          description: |
+            Click [쁘레젠토]
+          color: 00FF00
+
+      - name: Deploy Discord Notification
+        uses: sarisia/actions-status-discord@v1
+        if: ${{ failure() }}
+        with:
+          title: ❗️ Deploy failed ❗️
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          color: FF0000

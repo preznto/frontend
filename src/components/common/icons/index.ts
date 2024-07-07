@@ -1,3 +1,4 @@
+export { default as IconBang } from './Bang';
 export { default as IconClose } from './Close';
 export { default as IconHeart } from './Heart';
 export { default as IconHeartFilled } from './HeartFilled';
