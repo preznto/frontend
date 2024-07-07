@@ -17,7 +17,7 @@ import { Route as MyLayoutImport } from './routes/my/_layout'
 import { Route as MyLayoutIndexImport } from './routes/my/_layout.index'
 import { Route as MyWishlistCreateImport } from './routes/my/wishlist.create'
 import { Route as MyLayoutMessageImport } from './routes/my/_layout.message'
-import { Route as MyWishlistWishlistIdItemsImport } from './routes/my/wishlist.$wishlistId.items'
+import { Route as MyWishlistWishlistIdItemsIndexImport } from './routes/my/wishlist.$wishlistId.items.index'
 import { Route as MyLayoutWishlistWishlistIdIndexImport } from './routes/my/_layout.wishlist.$wishlistId.index'
 import { Route as MyWishlistWishlistIdItemsWishitemIdImport } from './routes/my/wishlist.$wishlistId.items.$wishitemId'
 
@@ -52,10 +52,11 @@ const MyLayoutMessageRoute = MyLayoutMessageImport.update({
   getParentRoute: () => MyLayoutRoute,
 } as any)
 
-const MyWishlistWishlistIdItemsRoute = MyWishlistWishlistIdItemsImport.update({
-  path: '/wishlist/$wishlistId/items',
-  getParentRoute: () => MyRoute,
-} as any)
+const MyWishlistWishlistIdItemsIndexRoute =
+  MyWishlistWishlistIdItemsIndexImport.update({
+    path: '/wishlist/$wishlistId/items/',
+    getParentRoute: () => MyRoute,
+  } as any)
 
 const MyLayoutWishlistWishlistIdIndexRoute =
   MyLayoutWishlistWishlistIdIndexImport.update({
@@ -65,8 +66,8 @@ const MyLayoutWishlistWishlistIdIndexRoute =
 
 const MyWishlistWishlistIdItemsWishitemIdRoute =
   MyWishlistWishlistIdItemsWishitemIdImport.update({
-    path: '/$wishitemId',
-    getParentRoute: () => MyWishlistWishlistIdItemsRoute,
+    path: '/wishlist/$wishlistId/items/$wishitemId',
+    getParentRoute: () => MyRoute,
   } as any)
 
 // Populate the FileRoutesByPath interface
@@ -108,19 +109,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MyLayoutIndexImport
       parentRoute: typeof MyLayoutImport
     }
-    '/my/wishlist/$wishlistId/items': {
-      id: '/my/wishlist/$wishlistId/items'
-      path: '/wishlist/$wishlistId/items'
-      fullPath: '/my/wishlist/$wishlistId/items'
-      preLoaderRoute: typeof MyWishlistWishlistIdItemsImport
-      parentRoute: typeof MyImport
-    }
     '/my/wishlist/$wishlistId/items/$wishitemId': {
       id: '/my/wishlist/$wishlistId/items/$wishitemId'
-      path: '/$wishitemId'
+      path: '/wishlist/$wishlistId/items/$wishitemId'
       fullPath: '/my/wishlist/$wishlistId/items/$wishitemId'
       preLoaderRoute: typeof MyWishlistWishlistIdItemsWishitemIdImport
-      parentRoute: typeof MyWishlistWishlistIdItemsImport
+      parentRoute: typeof MyImport
     }
     '/my/_layout/wishlist/$wishlistId/': {
       id: '/my/_layout/wishlist/$wishlistId/'
@@ -128,6 +122,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/my/wishlist/$wishlistId'
       preLoaderRoute: typeof MyLayoutWishlistWishlistIdIndexImport
       parentRoute: typeof MyLayoutImport
+    }
+    '/my/wishlist/$wishlistId/items/': {
+      id: '/my/wishlist/$wishlistId/items/'
+      path: '/wishlist/$wishlistId/items'
+      fullPath: '/my/wishlist/$wishlistId/items'
+      preLoaderRoute: typeof MyWishlistWishlistIdItemsIndexImport
+      parentRoute: typeof MyImport
     }
   }
 }
@@ -142,9 +143,8 @@ export const routeTree = rootRoute.addChildren({
       MyLayoutWishlistWishlistIdIndexRoute,
     }),
     MyWishlistCreateRoute,
-    MyWishlistWishlistIdItemsRoute: MyWishlistWishlistIdItemsRoute.addChildren({
-      MyWishlistWishlistIdItemsWishitemIdRoute,
-    }),
+    MyWishlistWishlistIdItemsWishitemIdRoute,
+    MyWishlistWishlistIdItemsIndexRoute,
   }),
 })
 
@@ -164,7 +164,8 @@ export const routeTree = rootRoute.addChildren({
       "children": [
         "/my/_layout",
         "/my/wishlist/create",
-        "/my/wishlist/$wishlistId/items"
+        "/my/wishlist/$wishlistId/items/$wishitemId",
+        "/my/wishlist/$wishlistId/items/"
       ]
     },
     "/my/_layout": {
@@ -188,20 +189,17 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "my/_layout.index.tsx",
       "parent": "/my/_layout"
     },
-    "/my/wishlist/$wishlistId/items": {
-      "filePath": "my/wishlist.$wishlistId.items.tsx",
-      "parent": "/my",
-      "children": [
-        "/my/wishlist/$wishlistId/items/$wishitemId"
-      ]
-    },
     "/my/wishlist/$wishlistId/items/$wishitemId": {
       "filePath": "my/wishlist.$wishlistId.items.$wishitemId.tsx",
-      "parent": "/my/wishlist/$wishlistId/items"
+      "parent": "/my"
     },
     "/my/_layout/wishlist/$wishlistId/": {
       "filePath": "my/_layout.wishlist.$wishlistId.index.tsx",
       "parent": "/my/_layout"
+    },
+    "/my/wishlist/$wishlistId/items/": {
+      "filePath": "my/wishlist.$wishlistId.items.index.tsx",
+      "parent": "/my"
     }
   }
 }
