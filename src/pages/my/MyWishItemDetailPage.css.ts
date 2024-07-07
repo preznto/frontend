@@ -1,6 +1,5 @@
 import { vars } from '@/theme/globalTheme.css';
-import { createVar, style } from '@vanilla-extract/css';
-
+import { style } from '@vanilla-extract/css';
 export const wishItemImageSection = style({
   position: 'relative',
 });

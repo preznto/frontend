@@ -1,6 +1,6 @@
 import { Body12, Body14, Body16, Body18, Heading24 } from '@/components/common/typography';
 import useTopNavigation from '@/hooks/useTopNavigation';
-import React, { Fragment, SyntheticEvent } from 'react';
+import React, { Fragment, SyntheticEvent, useState } from 'react';
 import {
   emptyIcon,
   fudingUserImg,
@@ -22,6 +22,7 @@ import defaultItemImg from '@/assets/defaultItemImg.png';
 import FundingStatusBadge from '@/components/wishlist/FundingStatusBadge';
 import Empty from '@/components/common/Empty';
 import ProgressBar from '@/components/common/ProgressBar';
+import Switch from '@/components/common/Switch';
 
 const WishItemImage = () => {
   const handleImageError = (e: SyntheticEvent<HTMLImageElement, Event>) => {
@@ -69,6 +70,26 @@ const WishItemInfo = () => {
         기타 설명을 입력하는
         어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구
       </Body16>
+    </section>
+  );
+};
+
+const WishItemInfoModifyForm = () => {
+  const handleSwitchChange = (checked: boolean) => {
+    console.warn(checked);
+  };
+
+  return (
+    <section className={wishItemInfoSection}>
+      <div className={wishItemNameWrraper}>
+        <Body16 fw="bold">펀딩 진행하기</Body16>
+        <Switch onChange={handleSwitchChange} />
+      </div>
+      <div>
+        <div>TextField</div>
+        <div>TextField</div>
+        <div>TextField</div>
+      </div>
     </section>
   );
 };
@@ -128,11 +149,14 @@ const MyWishItemDetailPage = () => {
     },
   ];
   useTopNavigation({ left: 'back' });
+
+  const [modifyMode, setModifyMode] = useState(true);
+
   return (
     <Fragment>
       <main>
         <WishItemImage />
-        <WishItemInfo />
+        {modifyMode ? <WishItemInfoModifyForm /> : <WishItemInfo />}
         <FundingUserList userList={dummy} />
       </main>
     </Fragment>
