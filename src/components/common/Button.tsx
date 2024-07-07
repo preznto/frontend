@@ -3,7 +3,7 @@ import React from 'react';
 import { buttonStyle, spinner } from '@/components/common/Button.css';
 import Lottie from 'react-lottie-player';
 import spinnerLottie from '@/assets/lottie/spinner.json';
-import { Body14, Body18 } from './typography';
+import { Body14, Body16 } from './typography';
 
 type Props = {
   onClick?: () => void;
@@ -24,7 +24,7 @@ const Button: React.FC<Props> = ({
   children,
   className,
 }) => {
-  const TypoComponent = size === 'large' ? Body18 : Body14;
+  const TypoComponent = size === 'large' ? Body16 : Body14;
 
   return (
     <button
