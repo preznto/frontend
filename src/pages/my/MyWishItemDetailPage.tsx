@@ -1,4 +1,3 @@
-import Badge from '@/components/common/Badge';
 import { Body12, Body14, Body16, Body18, Heading24 } from '@/components/common/typography';
 import useTopNavigation from '@/hooks/useTopNavigation';
 import React, { Fragment, SyntheticEvent } from 'react';
@@ -22,6 +21,7 @@ import {
 import Button from '@/components/common/Button';
 import defaultItemImg from '@/assets/defaultItemImg.png';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
+import FundingStatusBadge from '@/components/wishlist/FundingStatusBadge';
 
 const WishItemImage = () => {
   const handleImageError = (e: SyntheticEvent<HTMLImageElement, Event>) => {
@@ -52,7 +52,7 @@ const WishItemInfo = () => {
     <section className={wishItemInfoSection}>
       <div className={wishItemNameWrraper}>
         <Body18>LEXON MINA 무드등 조명 램프</Body18>
-        <Badge color="blue">펀딩중</Badge>
+        <FundingStatusBadge status="active" />
       </div>
       <div>
         <Body12 color="black64">펀딩 달성 금액</Body12>
