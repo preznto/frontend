@@ -11,7 +11,7 @@ export const wishItemImg = style({
 
 export const linkBtn = style({
   position: 'absolute',
-  bottom: -2,
+  bottom: 22,
   left: 20,
 });
 
