@@ -10,6 +10,7 @@ import {
   fundingUserList,
   fundingUserListSection,
   linkBtn,
+  modifyModeFooter,
   wishItemDescription,
   wishItemImageSection,
   wishItemImg,
@@ -133,6 +134,25 @@ const FundingUserList: React.FC<FundingUserListProp> = ({ userList }) => {
   );
 };
 
+type ModifyModeFooterProps = {
+  availableDelete: boolean;
+};
+
+const ModifyModeFooter: React.FC<ModifyModeFooterProps> = ({ availableDelete }) => {
+  return (
+    <section className={modifyModeFooter}>
+      {availableDelete && (
+        <Button type="gray" size="large">
+          삭제하기
+        </Button>
+      )}
+      <Button type={availableDelete ? 'gray' : 'primary'} size="large">
+        수정하기
+      </Button>
+    </section>
+  );
+};
+
 const MyWishItemDetailPage = () => {
   const dummy = [
     {
@@ -158,6 +178,7 @@ const MyWishItemDetailPage = () => {
         <WishItemImage />
         {modifyMode ? <WishItemInfoModifyForm /> : <WishItemInfo />}
         <FundingUserList userList={dummy} />
+        <ModifyModeFooter availableDelete={true} />
       </main>
     </Fragment>
   );

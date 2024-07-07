@@ -72,3 +72,16 @@ export const emptyIcon = style({
 export const wishItemDescription = style({
   marginTop: 20,
 });
+
+// TODO: Flating 인지 아닌지 확인하고 BG 어떻게 해야하는지?
+export const modifyModeFooter = style({
+  position: 'fixed',
+  zIndex: 1,
+  backgroundColor: vars.color.white100,
+  bottom: 0,
+  display: 'flex',
+  gap: 8,
+  justifyContent: 'space-between',
+  width: '100%',
+  padding: 20,
+});
