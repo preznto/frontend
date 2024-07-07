@@ -79,8 +79,7 @@ export const fundingUserItemWrraper = style({
   height: 78,
   selectors: {
     '&:not(:first-child)': {
-      // TODO: 확인 필요 정의되지 않은 컬러값
-      borderTop: `1px solid #F3F4F6`,
+      borderTop: `1px solid ${vars.color.black04}`,
     },
   },
 });
