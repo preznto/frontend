@@ -40,30 +40,6 @@ export const fundingRate = style({
   marginLeft: 'auto',
 });
 
-export const progress = createVar();
-
-const progressBase = style({
-  height: 12,
-  borderRadius: 4,
-});
-
-export const progressBarWrraper = style([
-  {
-    backgroundColor: vars.color.black04,
-    width: '100%',
-    marginBottom: 20,
-  },
-  progressBase,
-]);
-
-export const progressBar = style([
-  {
-    backgroundColor: vars.color.black100,
-    width: progress,
-  },
-  progressBase,
-]);
-
 export const fundingUserListSection = style({
   borderTop: `8px solid ${vars.color.black04}`,
   padding: '30px 20px 40px 20px',
@@ -92,4 +68,8 @@ export const fudingUserImg = style({
 
 export const emptyIcon = style({
   marginTop: 48,
+});
+
+export const wishItemDescription = style({
+  marginTop: 20,
 });

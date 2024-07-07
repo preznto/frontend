@@ -10,9 +10,7 @@ import {
   fundingUserList,
   fundingUserListSection,
   linkBtn,
-  progress,
-  progressBar,
-  progressBarWrraper,
+  wishItemDescription,
   wishItemImageSection,
   wishItemImg,
   wishItemInfoSection,
@@ -21,9 +19,9 @@ import {
 } from './MyWishItemDetailPage.css';
 import Button from '@/components/common/Button';
 import defaultItemImg from '@/assets/defaultItemImg.png';
-import { assignInlineVars } from '@vanilla-extract/dynamic';
 import FundingStatusBadge from '@/components/wishlist/FundingStatusBadge';
 import Empty from '@/components/common/Empty';
+import ProgressBar from '@/components/common/ProgressBar';
 
 const WishItemImage = () => {
   const handleImageError = (e: SyntheticEvent<HTMLImageElement, Event>) => {
@@ -66,10 +64,8 @@ const WishItemInfo = () => {
           </Body14>
         </div>
       </div>
-      <div className={progressBarWrraper}>
-        <div className={progressBar} style={assignInlineVars({ [progress]: '30%' })} />
-      </div>
-      <Body16 color="black64">
+      <ProgressBar total={120000} value={70000} />
+      <Body16 className={wishItemDescription} color="black64">
         기타 설명을 입력하는
         어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구
       </Body16>
