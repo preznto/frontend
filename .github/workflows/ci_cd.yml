@@ -41,9 +41,11 @@ jobs:
           script: |
             docker ps
             docker stop frontend
+            docker rm frontend
             docker pull ${{ secrets.DOCKER_USERNAME }}/preznto:${{ github.sha }}
             docker run -d -p 8080:8080 --name frontend ${{ secrets.DOCKER_USERNAME }}/preznto:${{ github.sha }}
             docker image prune -f
+            exit $(docker inspect frontend --format='{{.State.ExitCode}}')
 
       - name: Deploy Discord Notification
         uses: sarisia/actions-status-discord@v1
