@@ -24,6 +24,7 @@ import FundingStatusBadge from '@/components/wishlist/FundingStatusBadge';
 import Empty from '@/components/common/Empty';
 import ProgressBar from '@/components/common/ProgressBar';
 import Switch from '@/components/common/Switch';
+import Popup from '@/components/common/Popup';
 
 const WishItemImage = () => {
   const handleImageError = (e: SyntheticEvent<HTMLImageElement, Event>) => {
@@ -136,17 +137,27 @@ const FundingUserList: React.FC<FundingUserListProp> = ({ userList }) => {
 
 type ModifyModeFooterProps = {
   availableDelete: boolean;
+  onClickModfiyButton: () => void;
+  onClickDeleteButton: () => void;
 };
 
-const ModifyModeFooter: React.FC<ModifyModeFooterProps> = ({ availableDelete }) => {
+const ModifyModeFooter: React.FC<ModifyModeFooterProps> = ({
+  availableDelete,
+  onClickModfiyButton,
+  onClickDeleteButton,
+}) => {
   return (
     <section className={modifyModeFooter}>
       {availableDelete && (
-        <Button type="gray" size="large">
+        <Button onClick={onClickDeleteButton} type="gray" size="large">
           삭제하기
         </Button>
       )}
-      <Button type={availableDelete ? 'gray' : 'primary'} size="large">
+      <Button
+        onClick={onClickModfiyButton}
+        type={availableDelete ? 'gray' : 'primary'}
+        size="large"
+      >
         수정하기
       </Button>
     </section>
@@ -171,6 +182,20 @@ const MyWishItemDetailPage = () => {
   useTopNavigation({ left: 'back' });
 
   const [modifyMode, setModifyMode] = useState(true);
+  const [isShowPopup, setIsShowPopup] = useState(false);
+
+  const deleteWishItem = () => {
+    console.warn('위시아이템 삭제');
+    handlePopup(false);
+  };
+
+  const handlePopup = (isShow: boolean) => {
+    setIsShowPopup(isShow);
+  };
+
+  const modifyWishItem = () => {
+    console.warn('위시아이템 수정');
+  };
 
   return (
     <Fragment>
@@ -178,7 +203,20 @@ const MyWishItemDetailPage = () => {
         <WishItemImage />
         {modifyMode ? <WishItemInfoModifyForm /> : <WishItemInfo />}
         <FundingUserList userList={dummy} />
-        <ModifyModeFooter availableDelete={true} />
+        <ModifyModeFooter
+          onClickModfiyButton={modifyWishItem}
+          onClickDeleteButton={() => handlePopup(true)}
+          availableDelete={true}
+        />
+        {isShowPopup && (
+          <Popup
+            title="정말 삭제하시겠어요?"
+            onClickMainButton={deleteWishItem}
+            onClickCancelButton={() => handlePopup(false)}
+            mainButtonText="삭제"
+            cancelButtonText="취소"
+          />
+        )}
       </main>
     </Fragment>
   );
